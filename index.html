@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uso de librerias Chart y Modificación de Fechas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="js/moment.js"></script>
+</head>
+<body>
+    <div style="height: 800px;width: 800px;">
+        <canvas id="ventas" width="400" height="400"></canvas>
+        <script>
+            var ctx = document.getElementById('ventas').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Cartagena', 'Costa Atlantica', 'Santanderes', 'Cundinamarca', 'Valle', 'Antioquia'],
+                    datasets: [{
+                        label: 'Cumplimiento Metas',
+                        data: [28, 35, 68, 85, 42, 33],
+                        backgroundColor: [
+                            'rgba(46, 34, 122, 48)',
+                            'rgba(199, 138, 95, 78)',
+                            'rgba(91, 75, 199, 78)',
+                            'rgba(68, 199, 56, 78)',
+                            'rgba(45, 122, 40, 48)',
+                            'rgba(255, 159, 64, 25)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+            var a = moment('1976-04-19').locale('es').format('LL'); 
+            document.write('Mi fecha de nacimiento es: '+a)
+
+            </script>
+    </div>
+
+</body>
+</html>
